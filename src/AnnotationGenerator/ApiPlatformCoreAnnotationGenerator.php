@@ -41,7 +41,23 @@ final class ApiPlatformCoreAnnotationGenerator extends AbstractAnnotationGenerat
      */
     public function generateFieldAnnotations(string $className, string $fieldName): array
     {
-        return $this->classes[$className]['fields'][$fieldName]['isCustom'] ? [] : [sprintf('@ApiProperty(iri="http://schema.org/%s")', $fieldName)];
+        if ($this->classes[$className]['fields'][$fieldName]['isCustom']) {
+            return [];
+        }
+
+        $attributes = '';
+
+        if (null !== $readableLink = $this->classes[$className]['fields'][$fieldName]['readableLink']) {
+            $attributes = sprintf(', readableLink="%s"', $readableLink);
+        }
+
+        if (null !== $writableLink = $this->classes[$className]['fields'][$fieldName]['writableLink']) {
+            $attributes .= sprintf(', writableLink="%s"', $writableLink);
+        }
+
+        return [
+            sprintf('@ApiProperty(iri="http://schema.org/%s"%s)', $fieldName, $attributes)
+        ];
     }
 
     /**
