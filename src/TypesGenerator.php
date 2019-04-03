@@ -656,6 +656,8 @@ class TypesGenerator
                 'isArray' => $isArray,
                 'isReadable' => $propertyConfig['readable'] ?? true,
                 'isWritable' => $propertyConfig['writable'] ?? true,
+                'isReadableLink' => $propertyConfig['readableLink'] ?? null,
+                'isWritableLink' => $propertyConfig['writableLink'] ?? null,
                 'isNullable' => $isNullable,
                 'isUnique' => isset($propertyConfig['unique']) && $propertyConfig['unique'],
                 'isCustom' => empty($property),

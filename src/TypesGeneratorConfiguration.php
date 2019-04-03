@@ -189,6 +189,8 @@ final class TypesGeneratorConfiguration implements ConfigurationInterface
                                         ->scalarNode('mappedBy')->defaultNull()->info('The doctrine mapped by attribute')->example('partOfSeason')->end()
                                         ->scalarNode('inversedBy')->defaultNull()->info('The doctrine inversed by attribute')->example('episodes')->end()
                                         ->booleanNode('readable')->defaultTrue()->info('Is the property readable?')->end()
+                                        ->booleanNode('readableLink')->defaultNull()->info('Set ApiProperty readable link')->end()
+                                        ->booleanNode('writableLink')->defaultNull()->info('Set ApiProperty writable link')->end()
                                         ->booleanNode('writable')->defaultTrue()->info('Is the property writable?')->end()
                                         ->booleanNode('nullable')->defaultTrue()->info('Is the property nullable?')->end()
                                         ->booleanNode('unique')->defaultFalse()->info('The property unique')->end()
